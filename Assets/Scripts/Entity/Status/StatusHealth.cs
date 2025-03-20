@@ -1,6 +1,6 @@
 using Unity.Mathematics;
 
-public class StatusHealth : Status
+public class StatusHealth : BaseStatus
 {
     public float maxHealth = 100;
 

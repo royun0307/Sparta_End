@@ -1,4 +1,4 @@
-public class StatusAttack : Status
+public class StatusAttack : BaseStatus
 {
 
 }

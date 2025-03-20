@@ -1,4 +1,4 @@
-public class StatusCriticalRate : Status
+public class StatusCriticalRate : BaseStatus
 {
     public override void SetStat(float value)
     {

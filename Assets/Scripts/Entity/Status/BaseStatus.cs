@@ -1,7 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Status : MonoBehaviour
+public class BaseStatus : MonoBehaviour
 {
     public float value;
 
@@ -18,6 +18,6 @@ public class Status : MonoBehaviour
 
     public virtual void SubstractStatus(float amount)
     {
-        value = math.max(value, value - amount);
+        value = math.max(0, value - amount);
     }
 }
