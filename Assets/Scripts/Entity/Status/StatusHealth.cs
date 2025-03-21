@@ -1,8 +1,8 @@
-using Unity.Mathematics;
+using UnityEngine;
 
 public class StatusHealth : BaseStatus
 {
-    public float maxHealth = 100;
+    public float maxHealth;
 
     public void Start()
     {
@@ -23,38 +23,27 @@ public class StatusHealth : BaseStatus
     }
 
     public void SetMaxHealth(float amount)
-    {
+    {   
+        maxHealth = amount;
+        SetStat(value);
         if(amount <= 0)
         {
             maxHealth = 1;
         }
     }
 
-    public override void AddStatus(float amount)
-    {
-        base.AddStatus(amount);
-        if(amount > maxHealth)
-        {
-            value = maxHealth;
-        }
-    }
-
     public void AddMaxHealth(float amount)
     {
-        maxHealth += amount;
-    }
-
-    public override void SubstractStatus(float amount)
-    {
-        base.SubstractStatus(amount);
-        if (value == 0)
-        {
-            value = 1f;
-        }
+        SetMaxHealth(maxHealth + amount);
     }
 
     public void SubstaractMaxHealth(float amount)
     {
-        maxHealth = math.max(0, maxHealth - amount);
+        SetMaxHealth(Mathf.Max(0, maxHealth - amount));
+    }
+
+    public override string GetValueToString()
+    {
+        return base.GetValueToString() + "/" + maxHealth.ToString();
     }
 }

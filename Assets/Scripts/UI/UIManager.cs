@@ -2,24 +2,33 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+enum UIList
+{
+    UIMainMenu,
+    UIStatus,
+    UIInventory
+}
+
 public class UIManager : MonoBehaviour
 {
-    //기본적인 형태의 싱글턴 입니다. 수정해보세요.
-    private static UIManager _instance;
-    public static UIManager Instance { get { return _instance; } }
+    private static UIManager instance;
+    public static UIManager Instance { get { return instance; } }
 
-    private List<UIPopup> _popups = new List<UIPopup>();
+    private List<UIPopup> popups = new List<UIPopup>();
 
     public Transform popup_parent;
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        if (instance == null)
         {
-            Destroy(gameObject);
+            instance = this;
             return;
         }
-        _instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public T ShowPopup<T>() where T : UIPopup
@@ -29,12 +38,24 @@ public class UIManager : MonoBehaviour
 
     public UIPopup ShowPopup(string popupName)
     {
+        UIPopup existingPopup = popups.Find(p => p.GetType().Name == popupName);
+        if (existingPopup != null)
+        {
+            if (!existingPopup.gameObject.activeSelf)
+                existingPopup.gameObject.SetActive(true);
+
+            popups.Remove(existingPopup);
+            popups.Insert(0, existingPopup);
+            return existingPopup;
+        }
+
         var obj = Resources.Load($"Prefabs/UI/{popupName}", typeof(GameObject)) as GameObject;
         if (!obj)
         {
             Debug.LogWarning($"Failed to ShowPopup({popupName})");
             return null;
         }
+
         return ShowPopupWithPrefab(obj);
     }
 
@@ -47,11 +68,9 @@ public class UIManager : MonoBehaviour
     private UIPopup ShowPopup(GameObject obj)
     {
         var popup = obj.GetComponent<UIPopup>();
-        _popups.Insert(0, popup);
+        popups.Insert(0, popup);
 
         obj.SetActive(true);
         return popup;
     }
-
-    //추가적으로 필요한 함수들 작성해보세요.
 }

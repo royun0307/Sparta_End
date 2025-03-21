@@ -17,11 +17,13 @@ public class UIMainMenu : UIPopup
 
     private void OnStatus()
     {
-        UIManager.Instance.ShowPopup("UIStatus");
+        Hide();
+        UIManager.Instance.ShowPopup(UIList.UIStatus.ToString());
     }
 
     private void OnInventory()
     {
-        UIManager.Instance.ShowPopup("UIInventory");
+        Hide();
+        UIManager.Instance.ShowPopup(UIList.UIInventory.ToString());
     }
 }
