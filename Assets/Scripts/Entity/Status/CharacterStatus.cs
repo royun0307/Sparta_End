@@ -2,28 +2,30 @@ using UnityEngine;
 
 public class CharacterStatus : MonoBehaviour
 {
+    [Header("Inintialize value")]
+    [SerializeField] private float startAttck;
+    [SerializeField] private float startDefence;
+    [SerializeField] private float startMaxHealth;
+    [SerializeField] private float startCritical;
+
     public StatusAttack attack;
-    public float startAttck;
-
     public StatusDefence defence;
-    public float startDefence;
-
     public StatusHealth health;
-    public float startMaxHealth;
-
     public StatusCriticalRate critical;
-    public float startCritical;
+
 
     private void Awake()
     {
-        attack = gameObject.AddComponent<StatusAttack>();
-        defence = gameObject.AddComponent<StatusDefence>();
-        health = gameObject.AddComponent<StatusHealth>();
-        critical = gameObject.AddComponent<StatusCriticalRate>();
+        attack = AddAndInit<StatusAttack>(startAttck);
+        defence = AddAndInit<StatusDefence>(startDefence);
+        health = AddAndInit<StatusHealth>(startMaxHealth);
+        critical = AddAndInit<StatusCriticalRate>(startCritical);
+    }
 
-        attack.SetStat(startAttck);
-        defence.SetStat(startDefence);
-        health.SetMaxHealth(startMaxHealth);
-        critical.SetStat(startCritical);
+    private T AddAndInit<T>(float initValue) where T : BaseStatus
+    {
+        T status = gameObject.AddComponent<T>();
+        status.Initialize(initValue);
+        return status;
     }
 }

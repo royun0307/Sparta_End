@@ -4,9 +4,10 @@ public class StatusHealth : BaseStatus
 {
     public float maxHealth;
 
-    public void Start()
+    public override void Initialize(float initialValue)
     {
-        value = maxHealth;
+        maxHealth = initialValue;
+        base.Initialize(initialValue);
     }
 
     public override void SetStat(float value)

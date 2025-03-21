@@ -7,6 +7,11 @@ public class BaseStatus : MonoBehaviour
 
     public event Action<float> OnValueChanged;
 
+    public virtual void Initialize(float initialValue)
+    {
+        SetStat(initialValue);
+    }
+
     public virtual void SetStat(float amount)
     {
         if (amount < 0) return;//ÃÖ¼Ú°ªÀº 0
