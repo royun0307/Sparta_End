@@ -21,9 +21,9 @@ public class CharacterStatus : MonoBehaviour
         health = gameObject.AddComponent<StatusHealth>();
         critical = gameObject.AddComponent<StatusCriticalRate>();
 
-        attack.value = startAttck;
-        defence.value = startDefence;
-        health.maxHealth = startMaxHealth;
-        critical.value = startCritical;
+        attack.SetStat(startAttck);
+        defence.SetStat(startDefence);
+        health.SetMaxHealth(startMaxHealth);
+        critical.SetStat(startCritical);
     }
 }
