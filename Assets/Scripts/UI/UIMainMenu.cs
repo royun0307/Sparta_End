@@ -5,14 +5,28 @@ using UnityEngine.UI;
 
 public class UIMainMenu : UIPopup
 {
-    [SerializeField] Button status_Btn;
-    [SerializeField] Button inventory_Btn;
+    [SerializeField] Button statusBtn;
+    [SerializeField] Button inventoryBtn;
     [SerializeField] Transform parent;
 
     private void Awake()
     {
-        status_Btn.onClick.AddListener(OnStatus);
-        inventory_Btn.onClick.AddListener(OnInventory);
+        if (statusBtn != null)
+        {
+            statusBtn.onClick.AddListener(OnStatus);
+        }
+        else
+        {
+            Debug.LogError("statusBtn is null");
+        }
+        if (inventoryBtn != null)
+        {
+            inventoryBtn.onClick.AddListener(OnInventory);
+        }
+        else
+        {
+            Debug.LogError("inventoryBtn is null");
+        }
     }
 
     private void OnStatus()

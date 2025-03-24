@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd37eb2471af8874cb9d81c44ca80feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status_Btn: {fileID: 1502551482500149865}
-  inventory_Btn: {fileID: 7404003145805073953}
+  statusBtn: {fileID: 1502551482500149865}
+  inventoryBtn: {fileID: 7404003145805073953}
   parent: {fileID: 3455157908371817405, guid: 311e6a506a5aecc498e25615d7769c59, type: 3}
 --- !u!1 &3450838298575673937
 GameObject:

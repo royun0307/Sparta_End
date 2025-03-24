@@ -10,7 +10,7 @@ public class BaseStatus : MonoBehaviour
     public virtual void Initialize(float initialValue)
     {
         SetStat(initialValue);
-    }
+    }   
 
     public virtual void SetStat(float amount)
     {

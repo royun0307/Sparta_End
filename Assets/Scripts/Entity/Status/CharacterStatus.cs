@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterStatus : MonoBehaviour
@@ -13,6 +14,8 @@ public class CharacterStatus : MonoBehaviour
     public StatusHealth health;
     public StatusCriticalRate critical;
 
+    public Dictionary<StatType, BaseStatus> StatusDictionary {  get; private set; }
+
 
     private void Awake()
     {
@@ -20,6 +23,14 @@ public class CharacterStatus : MonoBehaviour
         defence = AddAndInit<StatusDefence>(startDefence);
         health = AddAndInit<StatusHealth>(startMaxHealth);
         critical = AddAndInit<StatusCriticalRate>(startCritical);
+
+        StatusDictionary = new Dictionary<StatType, BaseStatus>
+        {
+            { StatType.Attack, attack },
+            { StatType.Defence, defence },
+            { StatType.Health, health },
+            { StatType.Critical, critical }
+        };
     }
 
     private T AddAndInit<T>(float initValue) where T : BaseStatus

@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class StatusHealth : BaseStatus
 {
-    public float maxHealth;
+    public float health;
 
     public override void Initialize(float initialValue)
     {
-        maxHealth = initialValue;
         base.Initialize(initialValue);
+        health = initialValue;
     }
 
     public override void SetStat(float value)
@@ -17,34 +17,30 @@ public class StatusHealth : BaseStatus
         {
             value = 1f;
         }
-        else if (value > maxHealth)
+        else if (value < health)
         {
-            value = maxHealth;
+            health = value;
         }
     }
 
-    public void SetMaxHealth(float amount)
+    public void SetHealth(float amount)
     {   
-        maxHealth = amount;
+        health = amount;
         SetStat(value);
-        if(amount <= 0)
-        {
-            maxHealth = 1;
-        }
     }
 
-    public void AddMaxHealth(float amount)
+    public void AddHealth(float amount)
     {
-        SetMaxHealth(maxHealth + amount);
+        SetHealth(health + amount);
     }
 
-    public void SubstaractMaxHealth(float amount)
+    public void SubstaractHealth(float amount)
     {
-        SetMaxHealth(Mathf.Max(0, maxHealth - amount));
+        SetHealth(Mathf.Max(0, health - amount));
     }
 
     public override string GetValueToString()
     {
-        return base.GetValueToString() + "/" + maxHealth.ToString();
+        return health.ToString() + "/" + base.GetValueToString();
     }
 }
