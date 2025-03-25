@@ -7,4 +7,6 @@ public class ItemData : ScriptableObject
     public Sprite icon;
     public string itemName;
     public string description;
+
+    public virtual void OnClick() { }
 }

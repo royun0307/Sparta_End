@@ -49,17 +49,7 @@ public class ItemSlot : MonoBehaviour
     {
         if (item != null)
         {
-            if (item is EquipmentData data)
-            {
-                if (!equipped)
-                {
-                    GameManager.Instance.Player.equipmentManager.Equip(data);
-                }
-                else
-                {
-                    GameManager.Instance.Player.equipmentManager.Unequip(data);
-                }
-            }
+            item.OnClick();
         }
         inventory.setSlots();
     }

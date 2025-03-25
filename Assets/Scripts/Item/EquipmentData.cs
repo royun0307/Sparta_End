@@ -26,4 +26,18 @@ public class EquipmentData : ItemData
         }
         return modifiers;
     }
+
+    public override void OnClick()
+    {
+        var equipmentManager = GameManager.Instance.Player.equipmentManager;
+
+        if (!equipmentManager.IsEquipped(this))
+        {
+            equipmentManager.Equip(this);
+        }
+        else
+        {
+            equipmentManager.Unequip(this);
+        }
+    }
 }
