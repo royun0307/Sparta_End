@@ -17,6 +17,7 @@ public class EquipmentManager : MonoBehaviour
             Unequip(equippedEquipment[type]);
         }
         equippedEquipment[type] = equipment;
+        Debug.Log($"{equipment.equipmentType.ToString()} {equipment.itemName}을 장착했습니다.");
         ApplyEquipmentStats(equipment, true);
     }
 
@@ -28,6 +29,7 @@ public class EquipmentManager : MonoBehaviour
         if (equippedEquipment.ContainsKey(type) && equippedEquipment[type] == equipment)
         {
             equippedEquipment.Remove(type);
+            Debug.Log($"{equipment.equipmentType.ToString()} {equipment.itemName}을 장착 해제했습니다.");
             ApplyEquipmentStats(equipment, false);
         }
     }

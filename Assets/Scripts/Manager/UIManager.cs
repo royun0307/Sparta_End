@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
             return existingPopup;
         }
 
-        var obj = Resources.Load($"Prefabs/UI/{popupName}", typeof(GameObject)) as GameObject;
+        var obj = Resources.Load($"UI/Prefabs/{popupName}", typeof(GameObject)) as GameObject;
         if (!obj)
         {
             Debug.LogWarning($"Failed to ShowPopup({popupName})");
