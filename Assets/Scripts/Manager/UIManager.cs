@@ -5,7 +5,8 @@ enum UIList
 {
     UIMainMenu,
     UIStatus,
-    UIInventory
+    UIInventory,
+    UIInformation
 }
 
 public class UIManager : MonoBehaviour
