@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public EquipmentManager equipmentManager;
-    public CharacterStatus status;
-    public Inventory inventory;
-    public CharacterInfo characterInfo;
+    public EquipmentManager equipmentManager;//장비 장착
+    public CharacterStatus status;//스탯
+    public Inventory inventory;//인벤토리
+    public CharacterInfo characterInfo;//캐릭터 정보
 
     private void Awake()
     {

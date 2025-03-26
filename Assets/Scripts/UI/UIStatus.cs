@@ -3,14 +3,15 @@ using UnityEngine.UI;
 
 public class UIStatus : UIPopup
 {
-    [SerializeField] Button backBtn;
-    [SerializeField] StatUI attackUI;
-    [SerializeField] StatUI defenceUI;
-    [SerializeField] StatUI healthUI;
-    [SerializeField] StatUI criticalUI;
+    [SerializeField] Button backBtn;//뒤로가기
+    [SerializeField] StatUI attackUI;//공격력UI
+    [SerializeField] StatUI defenceUI;//방어력UI
+    [SerializeField] StatUI healthUI;//체력UI
+    [SerializeField] StatUI criticalUI;//치명타UI
 
     private void Awake()
     {
+        //예외처리
         if (backBtn != null)
         {
             backBtn.onClick.AddListener(OnBack);
@@ -22,6 +23,7 @@ public class UIStatus : UIPopup
 
         var playerStatus = GameManager.Instance.Player.status;
 
+        //예외처리와 초기화
         if (attackUI != null)
             attackUI.Init(playerStatus.attack);
         if (defenceUI != null)

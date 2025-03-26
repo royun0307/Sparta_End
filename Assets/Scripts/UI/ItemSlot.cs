@@ -3,11 +3,10 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    public ItemData item;
-
-    public UIInventory inventory;
-    public Button button;
-    public Image icon;
+    public ItemData item;//아이템
+    public UIInventory inventory;//인벤토리
+    public Button button;//아이템 슬랏
+    public Image icon;//아이콘
     private Outline outline;
 
     public int index;
@@ -24,7 +23,7 @@ public class ItemSlot : MonoBehaviour
         outline.enabled = equipped;
     }
 
-    public void Set()
+    public void Set()//값 세팅
     {
         if (item != null)
         {
@@ -45,11 +44,11 @@ public class ItemSlot : MonoBehaviour
         icon.gameObject.SetActive(false);
     }
 
-    public void OnClickButton()
+    public void OnClickButton()//클릭시
     {
         if (item != null)
         {
-            item.OnClick();
+            item.OnClick();//현재 장비만 구현, 클릭시 장착
         }
         inventory.setSlots();
     }

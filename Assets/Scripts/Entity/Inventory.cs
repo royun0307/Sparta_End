@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public int inventorySize;
-    public List<EquipmentData> inventory;
+    public int inventorySize;//인벤토리 크기
+    public List<EquipmentData> inventory;//인벤토리
 
-    public void AddItem(EquipmentData item)
+    public void AddItem(EquipmentData item)//아이템 추가
     {
-        if(inventory == null)
+        //예외처리
+        if (inventory == null)
         {
             Debug.LogError("Inventory is null");
             return;
@@ -24,7 +25,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void RemoveItem(EquipmentData item) 
+    public void RemoveItem(EquipmentData item)//아이템 제거
     { 
         for(int i = 0; i < inventory.Count; i++)
         {

@@ -13,6 +13,7 @@ public class UICharacterInfo : UIPopup
 
     private void Start()
     {
+        //예외 처리
         if (characterName == null)
         {
             Debug.LogError("charcaterNameText is null");
@@ -34,7 +35,7 @@ public class UICharacterInfo : UIPopup
         Set();
     }
 
-    public void Set()
+    public void Set()//값 설정
     {
         CharacterInfo characterInfo = GameManager.Instance.Player.characterInfo;
         characterName.text = characterInfo.characterName;

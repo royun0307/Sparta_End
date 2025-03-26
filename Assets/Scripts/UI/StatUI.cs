@@ -9,7 +9,7 @@ public class StatUI : MonoBehaviour
     public void Init(BaseStatus status)
     {
         baseStatus = status;
-        baseStatus.OnValueChanged += UpdateUI;
+        baseStatus.OnValueChanged += UpdateUI;//액션에 이벤트 추가
         UpdateUI(baseStatus.value);
     }
 
@@ -22,6 +22,6 @@ public class StatUI : MonoBehaviour
     private void OnDestroy()
     {
         if (baseStatus != null)
-            baseStatus.OnValueChanged -= UpdateUI;
+            baseStatus.OnValueChanged -= UpdateUI;//액션에 이벤트 제거
     }
 }

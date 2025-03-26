@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ItemData : ScriptableObject
 {
-    public Sprite icon;
-    public string itemName;
-    public string description;
+    public Sprite icon;//아이콘
+    public string itemName;//아이템 이름
+    public string description;//설명
 
     public virtual void OnClick() { }
 }

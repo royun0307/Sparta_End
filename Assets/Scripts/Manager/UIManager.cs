@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
 
     private List<UIPopup> popups = new List<UIPopup>();
 
-    public Transform popup_parent;
+    public Transform popup_parent;//팝업이 생성될 때 부모
 
     private void Awake()
     {
@@ -39,18 +39,19 @@ public class UIManager : MonoBehaviour
     public UIPopup ShowPopup(string popupName)
     {
         UIPopup existingPopup = popups.Find(p => p.GetType().Name == popupName);
-        if (existingPopup != null)
+        if (existingPopup != null)//팝업이 존재하면
         {
-            if (!existingPopup.gameObject.activeSelf)
+            if (!existingPopup.gameObject.activeSelf)//active가 false이면
                 existingPopup.gameObject.SetActive(true);
 
+            //리스트에서 인덱스 0으로 변경
             popups.Remove(existingPopup);
             popups.Insert(0, existingPopup);
             return existingPopup;
         }
 
-        var obj = Resources.Load($"UI/Prefabs/{popupName}", typeof(GameObject)) as GameObject;
-        if (!obj)
+        var obj = Resources.Load($"UI/Prefabs/{popupName}", typeof(GameObject)) as GameObject;//프리펩 로드
+        if (!obj)//예외처리
         {
             Debug.LogWarning($"Failed to ShowPopup({popupName})");
             return null;
@@ -61,7 +62,7 @@ public class UIManager : MonoBehaviour
 
     private UIPopup ShowPopupWithPrefab(GameObject prefab)
     {
-        var obj = Instantiate(prefab, popup_parent);
+        var obj = Instantiate(prefab, popup_parent);//생성
         return ShowPopup(obj);
     }
 
